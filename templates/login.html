@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+
+    <link rel="shortcut icon" href="../static/images/bitbug_favicon (1).ico">
+{#    <link rel="stylesheet" href="../static/css/login.css">#}
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <style>
+        body {
+            background: radial-gradient(220% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6) fixed;
+            overflow: hidden;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+            }
+
+            100% {
+                transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
+            }
+        }
+
+        .stars {
+            transform: perspective(500px);
+            transform-style: preserve-3d;
+            position: absolute;
+            bottom: 0;
+            perspective-origin: 50% 100%;
+            left: 50%;
+            animation: rotate 90s infinite linear;
+        }
+
+        .star {
+            width: 2px;
+            height: 2px;
+            background: #F7F7B6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: 0 0 -300px;
+            transform: translate3d(0, 0, -300px);
+            backface-visibility: hidden;
+        }
+
+        .table {
+            width: 400px;
+            height: 350px;
+            margin: 80px auto;
+        }
+
+        .table form {
+            width: 100%;
+        }
+
+        .table .name {
+            width: 280px;
+            margin: 20px auto 30px auto;
+            display: block;
+            height: 30px;
+            border-radius: 20px;
+            border: none;
+            background: rgba(0, 0, 0, 0.2);
+            text-indent: 0.5em;
+        }
+
+        .table .btn {
+            width: 100px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: none;
+            color: white;
+            margin: 0 auto;
+            display: block;
+        }
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background: linear-gradient(-30deg, rgb(199, 98, 230) 0%, rgb(43, 139, 230) 33%, #5e5353 66%, #607d8b 100%);
+    animation: animate 10s linear infinite; */
+}
+
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.box {
+    position: relative;
+    padding: 50px;
+    width: 360px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 15%, transparent 50%, transparent 85%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.box .form {
+    position: relative;
+    width: 100%;
+
+}
+
+.box .form h2 {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.box .form .inputBx {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.box .form .inputBx input {
+    width: 100%;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    padding: 8px 10px;
+    padding-left: 35px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.2);
+}
+
+.box .form .inputBx input::placeholder {
+    color: rgba(255, 255, 255, 0.534);
+}
+
+.box .form .inputBx input[type="submit"] {
+    background: #fff;
+    color: #111;
+    max-width: 100px;
+    padding: 8px 10px;
+    box-shadow: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.box .form .inputBx i {
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    transform: scale(0.7);
+    filter: invert(1);
+}
+
+.remenber {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.box .form p {
+    color: #fff;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 5px;
+
+}
+
+.box .form a {
+    color: #fff;
+
+}
+    </style>
+
+</head>
+
+<body>
+    <div class="stars"></div>
+    <section>
+        <div class="box">
+            <div class="form">
+                <h2>Login</h2>
+                <form METHOD="POST">
+                    <div class="inputBx">
+                        <input type="text" placeholder="UserId" name="UserId">
+                        <i class="fa fa-user" aria-hidden="true" style="font-size:35px;"></i>
+                    </div>
+                    <div class="inputBx">
+                        <input type="password" placeholder="UserPassword" name="UserPassword">
+                        <i class="fa fa-lock" aria-hidden="true" style="font-size: 35px;"></i>
+                    </div>
+                    <div class="inputBx">
+                        <input type="text" placeholder="IsAdmin" name="IsAdmin">
+                        <i class="fa fa-lock" aria-hidden="true" style="font-size: 35px;"></i>
+                    </div>
+                    <label class="remenber"><input type="checkbox"> Remenber Me</label>
+                    <div class="inputBx">
+                        <input type="submit" value="Login">
+                    </div>
+                </form>
+                <p>Forget <a href="#">Password</a></p>
+                <p>Register a new<a href="#">Account</a></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            var stars = 800;
+            var $stars = $(".stars");
+            var r = 800;
+            for (var i = 0; i < stars; i++) {
+                var $star = $("<div/>").addClass("star");
+                $stars.append($star);
+            }
+            $(".star").each(function () {
+                var cur = $(this);
+                var s = 0.2 + (Math.random() * 1);
+                var curR = r + (Math.random() * 300);
+                cur.css({
+                    transformOrigin: "0 0 " + curR + "px",
+                    transform: " translate3d(0,0,-" + curR + "px) rotateY(" + (Math.random() * 360) + "deg) rotateX(" + (Math.random() * -50) + "deg) scale(" + s + "," + s + ")"
+
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

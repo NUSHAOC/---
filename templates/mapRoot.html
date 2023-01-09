@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧出行管理端</title>
+    <base href="/">
+    <link rel="stylesheet" href="../static/jQuery_plugin/admin_plugin/jqueryifromeNav/css/page.css">
+    <link rel="stylesheet" href="../static/jQuery_plugin/admin_plugin/jqueryifromeNav/plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/jQuery_plugin/admin_plugin/jqueryifromeNav/plugins/css/icons.min.css">
+    <!-- <script src="jQuery_plugin/admin_plugin/jqueryifromeNav/js/vue.min.js"></script> -->
+    <script>
+        window.onload = function () {
+            var zhuye = document.querySelector('#zhuye')
+            zhuye.click()
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="page" id="app">
+        <div class="nav-left" v-show="navLeftFlag" ref="navLeft">
+            <div class="LogoName">
+                管理员系统
+            </div>
+            <div class="navDiv">
+                <div class="navName">导航</div>
+                <div class="nav-list">
+                    <ul>
+                        <li class="nav-tab a_active waves-effect">
+                            <a href="../static/jQuery_plugin/zhuye.background/svgmeihua/index.html" class="li-a active" target="iframe" id="zhuye"><i
+                                    class='bx bx-home-smile'></i> 主页
+                                <span class="badge badge-pill badge-primary float-right">2</span>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-tab">
+								<a href="#" class="li-a"><i class='bx bx-home-smile'></i> 设备管理</a>
+							</li> -->
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:;" class="li-a" id="why"><i class='bx bx-layer'></i> 站点管理
+                                <i class='bx bx-chevron-right' style="float: right;"></i></a>
+                            <div class="nav-box">
+                                <a href="../static/admin_profile/站点管理/CreateNode.html" class="li-a-a" target="iframe">添加站点</a>
+                            </div>
+                            <div class="nav-box">
+                                <a href="../static/admin_profile/站点管理/DeleteNode.html" class="li-a-a" target="iframe">删除站点</a>
+                            </div>
+                            <div class="nav-box">
+                                <a href="../static/admin_profile/站点管理/ChangeNode.html" class="li-a-a" target="iframe">修改站点</a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:void[0]" class="li-a"><i class='bx bx-cog'></i> 用户管理
+                                <i class='bx bx-chevron-right' style="float: right;"></i></a>
+                            <div class="nav-box">
+                                <a href="../static/admin_profile/用户管理/封禁用户.html" class="li-a-a" target="iframe">封禁用户</a>
+                            </div>
+                            <div class="nav-box">
+                                <a href="../static/admin_profile/用户管理/禁言用户.html" class="li-a-a" target="iframe">禁言用户</a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:void[0]" class="li-a"><i class='bx bx-buildings'></i> 管理员账户
+                                <i class='bx bx-chevron-right' style="float: right;"></i></a>
+                            <div class="nav-box">
+                                <a href="html/device/4-1.html" class="li-a-a" target="iframe">账户信息</a>
+                            </div>
+                            <div class="nav-box">
+                                <a href="html/device/4-1.html" class="li-a-a" target="iframe">修改账户</a>
+                            </div>
+                        </li>
+                        <li class="nav-tab nav-ul">
+                            <a href="javascript:void[0]" class="li-a"><i class='bx bx-edit'></i>邮件
+                                <i class='bx bx-chevron-right' style="float: right;"></i></a>
+                            <div class="nav-box">
+                                <a href="html/device/5-1.html" class="li-a-a" target="iframe">系统邮件</a>
+                            </div>
+                            <div class="nav-box">
+                                <a href="html/device/5-1.html" class="li-a-a" target="iframe">其他邮件</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-right" ref="navRight">
+            <div class="nav-top">
+                <button type="button" class="btn btn-primary btn-sm hiddenBtn" style="line-height: 10px;"
+                    @click="isShowLeft">
+                    <i class="bx bx-grid-alt" style="font-size: 16px;"></i>
+                </button>
+                <!-- <button type="button" class="btn btn-primary btn-sm showBtn" style="line-height: 10px; display: none;" onclick="showNavRight">
+						<i class="bx bx-expand" style="font-size: 16px;"></i>
+					</button> -->
+            </div>
+            <div class="content-page" ref="cPage">
+                <iframe name="iframe" width="100%" height="100%" frameborder="0" src="html/home.html"></iframe>
+            </div>
+        </div>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            let navflag = false;
+            var num = 0
+            $('.nav-tab').on('click', function () {
+                $(this).siblings().each(function () {
+                    $(this).removeClass('a_active');
+                    // $(this).removeClass('a_active');
+                    $(this).find('.nav-box').css('height', '0')
+                    //关闭右侧箭头
+                    if ($(this).attr('class').indexOf('nav-ul') != -1) {
+                        $(this).find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+                        $(this).find('.bx-chevron-right').css('transition', 'all .5s')
+                        $(this).removeClass('nav-show')
+                        // $(this).find('div').removeClass('nav-box')
+                    }
+                })
+                //当前选中
+                // if (num === 0) {
+                $(this).addClass('a_active')
+                $(this).find('.li-a').addClass('active')
+                // 打开右侧箭头
+                $(this).find('.bx-chevron-right').css('transform', 'rotateZ(90deg)')
+                $(this).find('.bx-chevron-right').css('transition', 'all .5s')
+                $(this).addClass('nav-show')
+                // num = 1
+                // } else {
+                //     $(this).on('click', '.li-a', function () {
+                //         console.log('成功？');
+                //         $(this).removeClass('a_active');
+                //         // $(this).removeClass('a_active');
+                //         $(this).find('.nav-box').css('height', '0')
+                //         //关闭右侧箭头
+                //         if ($(this).attr('class').indexOf('nav-ul') != -1) {
+                //             $(this).find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+                //             $(this).find('.bx-chevron-right').css('transition', 'all .5s')
+                //             $(this).removeClass('nav-show')
+                //             // $(this).find('div').removeClass('nav-box')
+                //         }
+                //         num = 0
+                //     })
+                // }
+                // if (num === 1) {
+                //     $(this).on('click', '.li-a', function () {
+                //         console.log('成功？');
+                //         $('.nav-tab').removeClass('a_active');
+                //         // $(this).removeClass('a_active');
+                //         $('.nav-tab').find('.nav-box').css('height', '0')
+                //         //关闭右侧箭头
+                //         if ($('.nav-tab').attr('class').indexOf('nav-ul') != -1) {
+                //             $('.nav-tab').find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+                //             $('.nav-tab').find('.bx-chevron-right').css('transition', 'all .5s')
+                //             $('.nav-tab').removeClass('nav-show')
+                //             // $(this).find('div').removeClass('nav-box')
+                //         }
+                //         num = 0
+                //     })
+                // }
+                // $(this).find('div').addClass('nav-box')
+            })
+            /* 二级菜单a点击事件 */
+            $(".li-a-a").click(function () {
+                $(".li-a-a").each(function () {
+                    $(this).removeClass('active-li-a');
+                })
+                $(this).addClass('active-li-a');
+            })
+
+
+
+            // $('.li-a').click(function () {
+            //     $(this).parent().removeClass('a_active');
+            //     // $(this).removeClass('a_active');
+            //     $(this).parent(), find('.nav-box').css('height', '0')
+            //     //关闭右侧箭头
+            //     if ($(this).parent().attr('class').indexOf('nav-ul') != -1) {
+            //         $(this).parent().find('.bx-chevron-right').css('transform', 'rotateZ(0deg)')
+            //         $(this).parent().find('.bx-chevron-right').css('transition', 'all .5s')
+            //         $(this).parent().removeClass('nav-show')
+            //         // $(this).find('div').removeClass('nav-box')
+            //     }
+
+
+
+            // })
+
+        })
+        const vue = new Vue({
+            el: '#app',
+            data: {
+                navLeftFlag: true
+            },
+            methods: {
+                isShowLeft() {
+                    if (this.navLeftFlag) {
+                        this.$refs.navRight.style.paddingLeft = '0px'
+                        this.$refs.cPage.style.left = '0px';
+                        this.navLeftFlag = false;
+                        // this.$refs.navLeft.style.width = '0px';
+                        // setTimeout(()=>{
+                        // 	this.navLeftFlag = false;
+                        // },200)
+                    } else {
+                        this.$refs.navRight.style.paddingLeft = '240px';
+                        this.$refs.cPage.style.left = '240px';
+                        this.navLeftFlag = true;
+                        // this.$refs.navLeft.style.width = '240px';
+                        // setTimeout(()=>{
+                        // 	this.navLeftFlag = true;
+                        // },200)
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

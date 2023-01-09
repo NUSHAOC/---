@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no, width=device-width">
+    <title>Document</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <link rel="stylesheet" href="../static/css/navigation.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/navigation.js"></script>
+    <link rel="shortcut icon" href="../static/images/bitbug_favicon (1).ico">
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=25916f32ac2fabde49b4161cfd980ed4"></script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=ce3b1a3a7e67fc75810ce1ba1f83c01a&plugin=AMap.Walking,AMap.Autocomplete"></script>
+
+    <link rel="stylesheet" href="../static/Bootstrap/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <script src="../static/Bootstrap/bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+    <script src="../static/Bootstrap/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <!-- 显示/隐藏实际路况图 -->
+    <div class="input-card" style="width: auto;">
+        <div class="input-item">
+            <button class="btn">显示/隐藏实时路况</button>
+        </div>
+    </div>
+    <!-- 显示/隐藏卫星图和路网 -->
+    <div class="satellite_network">
+        <div class="input_itemtwo">
+            <button>显示/隐藏卫星图和路网</button>
+        </div>
+    </div>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=	25916f32ac2fabde49b4161cfd980ed4"></script>
+    <!-- 地点关键子+步行路线规划 -->
+    <!-- 搜索路线框 -->
+    <script type="text/javascript"
+        src="https://webapi.amap.com/maps?v=1.4.15&key=ce3b1a3a7e67fc75810ce1ba1f83c01a&plugin=AMap.Walking,AMap.Autocomplete"></script>
+    <div id="panel"></div>
+    <div id="search">
+        <p>起始地</p><input type="text" id="node1" placeholder=" 请输入起始点"><br>
+        <p>目的地</p><input type="text" id="node2" placeholder=" 请输入目的地"><br>
+        <button id="btn">开始导航</button>
+    </div>
+
+    <!-- 高德地图 API -->
+    <div id="container"></div>
+    </form>
+    </div>
+
+    <div class="location_icon">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+    </div>
+
+    <div class="search">
+        <div class="inputspot">
+            <form id="inquire">
+                <input type="text" placeholder=" 搜索地点" id="shuru">
+                <button type="submit" data-toggle="modal" data-target="#myModal" id="sousuo">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="cancel">取消</div>
+    </div>
+    <!-- 菜单栏 -->
+    <ul class="menu">
+        <div class="menu_header">菜单栏</div>
+        <li>
+            <div class="header">功能使用 <i class="fa fa-angle-down" aria-hidden="true"></i> </div>
+            <ul>
+                <li><a href="#">常用地点收藏</a></li>
+                <li><a href="#">你的评论</a></li>
+                <li><a href="#">意见反馈</a></li>
+                <li><a href="#">个人中心</a></li>
+            </ul>
+        </li>
+    </ul>
+            <div style="margin-top: 10%;" class="modal fade" id="myModal" tabindex="-1" role="dialog"
+        aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="myModalLabel">地点信息</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="info_">
+                        <!-- <div style="font-size: 20px;margin: 0 auto"><i style="color: red;"
+                                class="glyphicon glyphicon-remove"></i>查询失败，没有此地点信息！</div>
+                        <div class="form-group" id="spot_name">
+                            <label for="disabledTextInput">地点名称:</label>
+                            <div id="spot_name"></div>
+                        </div>
+                        <div class="form-group" id="spot_route">
+                            <label for="disabledTextInput">地点名称:</label>
+                            <div id="spot_name"></div>
+                        </div>
+                        <div class="form-group" id="spot_jingdu">
+                            <label for="disabledTextInput">地点名称:</label>
+                            <div id="spot_name"></div>
+                        </div>
+                        <div class="form-group" id="spot_weidu">
+                            <label for="disabledTextInput">地点名称:</label>
+                            <div id="spot_name"></div>
+                        </div> -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+     $('#inquire').on('submit', function (e) {
+            e.preventDefault()
+            var shuru = $('#shuru').val().trim()
+
+            console.log(shuru);
+            $.ajax({
+                type: 'GET',
+                url: 'login/user/map/search/',
+                data: {
+                    spot_name: shuru
+                },
+                success: function (res) {
+                    var rows = []
+                    if (res.state !== 200) {
+                        rows.push('<div style="font-size: 20px;margin: 0 auto"><i style="color: red;"class="glyphicon glyphicon-remove"></i>查询失败，没有此地点信息！</div>')
+                        return $('#info_').empty().append(rows.join(''))
+                    }
+                    rows.push('<div class="form-group"id="spot_name"> <label for="disabledTextInput">地点名称:</label><div id="spot_name">' + res.info.name + '</div> </div><div class="form-group"id="spot_name"> <label for="disabledTextInput">地铁站点:</label><div id="spot_name">' + res.info.num + '</div> </div><div class="form-group"id="spot_name"> <label for="disabledTextInput">地点经度:</label><div id="spot_name">' + res.info.lat + '</div> </div><div class="form-group"id="spot_name"> <label for="disabledTextInput">地点纬度:</label><div id="spot_name">' + res.info.log + '</div> </div>')
+                    $('#info_').empty().append(rows.join(''))
+                }
+            })
+        })
+        $('#cancel_').on('click', function () {
+            $('#inquire')[0].reset()
+        })
+</script>
+
+</body>
+
+</html>
