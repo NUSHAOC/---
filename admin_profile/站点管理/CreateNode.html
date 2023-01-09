@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员主页</title>
+    <script src="../../js/jquery.min.js"></script>
+    <style>
+        body {
+            background: rgba(0, 0, 0, 0.5) url('../../images/map.png') no-repeat;
+            background-size: cover;
+        }
+
+        span {
+            position: absolute;
+            width: 600px;
+            height: 580px;
+            background: rgba(255, 255, 255, 0.8);
+            /* z-index: 1; */
+            left: 350px;
+            top: 45px;
+            border-radius: 15px;
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            font-size: 35px;
+            left: 33%;
+        }
+
+        div:nth-child(1) {
+            top: 10%;
+        }
+
+        div:nth-child(2) {
+            top: 23%;
+        }
+
+        div:nth-child(3) {
+            top: 36%;
+        }
+        div:nth-child(4){
+            top:49%
+        }
+        div:nth-child(5){
+            top:62%
+        }
+        div:nth-child(6){
+            top:75%
+        }
+
+        div input {
+            display: block;
+            width: 350px;
+            height: 45px;
+            font-size: 18px;
+            margin-top: 2px;
+        }
+
+        #btn {
+            position: absolute;
+            font-size: 25px;
+            width: 200px;
+            height: 60px;
+            border: 1px solid black;
+            border-radius: 22px;
+            left: 44%;
+            top: 87%;
+        }
+
+        #btn:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <span></span>
+    <header>
+        <form method="post" action="/login/admin/maproot/create/">
+
+            <div>
+                名字： <input type="text" placeholder="请输入地点名称" name="Node">
+            </div>
+            <div>
+                编号： <input type="text" placeholder="请输入编号" name="Id">
+            </div>
+            <div>
+                经度： <input type="text" placeholder="请输入信息" name="Log">
+            </div>
+            <div>
+                维度： <input type="text" placeholder="请输入信息" name="Lat">
+            </div>
+            <div>
+                邻接： <input type="text" placeholder="请输入信息" name="aNode">
+            </div>
+            <div>
+                距离： <input type="text" placeholder="请输入信息" name="aDis">
+            </div>
+            <button type="submit" id="btn" value="CreateNode">添加站点</button>
+        </form>
+
+    </header>
+{#<script>#}
+{#        var form = document.querySelector('#forml')#}
+{#        form.addEventListener('submit', function (e) {#}
+{#            e.preventDefault()#}
+{#            var fd = new FormData(form)#}
+{#            var xhr = new XMLHttpRequest()#}
+{#            xhr.open('POST',)#}
+{#            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')#}
+{#            xhr.send(fd)#}
+{#            xhr.onreadystatechange = function () {#}
+{#                console.log(xhr.responseText);#}
+{#            }#}
+{#        })#}
+{#    </script>#}
+
+</body>
+
+</html>

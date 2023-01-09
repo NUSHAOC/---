@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.title {
+    display: block;
+    position: absolute;
+    font-size: 55px;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form {
+    transition: .4s, box-shadow .3s .4s;
+
+}
+
+.cord {
+    position: absolute;
+    width: 28px;
+    height: 157px;
+    top: -37px;
+    left: 1446px;
+    background: url(../images/login_images/cord.svg) no-repeat;
+    background-size: cover;
+}
+
+.cord:hover {
+    cursor: pointer;
+}
+
+section {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ccc;
+    /* background: url(../images/login_images/landscape.jpg) no-repeat;
+    background-size: cover; */
+    background: transparent;
+    transition: none;
+    z-index: 20;
+}
+
+
+.background {
+    position: absolute;
+    font-size: 30px;
+    font-family: '汉仪雪峰体简';
+    text-align: center;
+    line-height: 50px;
+    width: 150px;
+    height: 50px;
+    color: red;
+    border-radius: 25%;
+    background-color: #ccc;
+    user-select: none;
+    margin: 0 35px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background: #111;
+    color: #fff;
+    font-size: 30px;
+    letter-spacing: 2px;
+    /* 强制所有文本转换为大写，可去mdn官网查询 */
+    text-transform: uppercase;
+    cursor: pointer;
+    top: 120px;
+    left: 1350px;
+}
+
+
+
+.background:hover {
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+}
+
+
+
+.background:before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    border-radius: 50px;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.5d;
+}
+
+.background:hover:before {
+    opacity: 1;
+    z-index: -1;
+}
+
+.background:hover {
+    z-index: 1;
+    animation: glow 8s linear infinite;
+    cursor: pointer;
+
+}
+
+@keyframes glow {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 400%;
+    }
+}
+
+
+.box {
+    position: relative;
+    padding: 50px;
+    width: 560px;
+    height: 400px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background: rgba(31, 25, 25, 0.3);
+    border-radius: 25px;
+    margin-top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.box::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 15%, transparent 50%, transparent 85%, rgba(255, 255, 255, 0.3) 100%);
+}
+
+.box .form {
+    position: relative;
+    width: 100%;
+
+}
+
+.box .form h2 {
+    font-family: '汉仪霹雳体简';
+    color: #fff;
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    margin-left: 40%;
+    user-select: none;
+}
+
+.box .form .inputBx {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.box .form .remenber {
+    margin-left: 28%;
+}
+
+.box .form .inputBx input {
+    width: 50%;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 300;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.2);
+    margin-left: 28%;
+}
+
+.box .form .inputBx input::placeholder {
+    color: rgba(255, 255, 255, 0.534);
+}
+
+.box .form .inputBx input[type="submit"] {
+    width: 120px;
+    height: 50px;
+    background: #fff;
+    color: #111;
+    max-width: 120px;
+    padding: 8px 10px;
+    box-shadow: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 60px;
+    margin-left: 170px;
+}
+
+.box .form .inputBx i {
+    position: absolute;
+    top: 2px;
+    left: 98px;
+    transform: scale(0.7);
+    filter: invert(1);
+}
+
+.remenber {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-weight: 300;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.box .form p {
+    color: #fff;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 5px;
+    text-align: center;
+
+}
+
+.box .form a {
+    color: #fff;
+
+}

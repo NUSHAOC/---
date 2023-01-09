@@ -1,0 +1,714 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <title>NZ-MsgBox</title>
+    <script src="Js/jquery-3.4.1.min.js"></script>
+    <link href="Css/displaystyle.css" rel="stylesheet" />
+    <script src="Js/syntaxhighlighter_3.0.83/shCore.js"></script>
+    <script src="Js/syntaxhighlighter_3.0.83/shBrushJScript.js"></script>
+    <link href="Js/syntaxhighlighter_3.0.83/styles/shCoreRDark.css" rel="stylesheet" />
+    <script src="Js/NZ-Plugin/Js/NZ-MsgBox.min.js"></script>
+    <link href="Js/NZ-Plugin/Css/NZ-MsgBox.min.css" rel="stylesheet" />
+    <script src="Js/NZ-Plugin/Js/NZ-Drag.min.js"></script>
+    <link href="CSS/fontawesome-free-5.11.2-web/css/all.min.css" rel="stylesheet" />
+    <link href="JS/spin/spin.css" rel="stylesheet" />
+    <script src="JS/spin/spin.js"></script>
+    <link href="CSS/animate.min.css" rel="stylesheet" />
+    <script src="JS/demo.js"></script>
+    <script>
+        SyntaxHighlighter.all();
+        $(function () {
+            $("#btn_msgbox_noicon").click(function () {
+                $.NZ_MsgBox.alert({ title: "yes!成功！", content: "耶耶耶！成功！well done!", type: "", buttons: { confirm: { text: "好的" } } });
+            });
+            $("#btn_msgbox_notitle").click(function () {
+                $.NZ_MsgBox.alert({ title: "", content: "耶耶耶！成功！well done!", type: "", buttons: { confirm: { text: "好的" } } });
+            });
+            $("#btn_msgbox_success").click(function () {
+                $.NZ_MsgBox.alert({ title: "yes!成功！", content: "耶耶耶！成功！well done!", type: "success" });
+            });
+            $("#btn_warning").click(function () {
+                $.NZ_MsgBox.alert({ title: "Warning!警告！", content: "Warning！警告！well done!", type: "warning" });
+            });
+            $("#btn_msgbox_error").click(function () {
+                $.NZ_MsgBox.alert({ title: "Error!错误！", content: "Error！错误！", type: "error" });
+            });
+            $("#btn_supercon").click(function () {
+                $.NZ_MsgBox.alert({ title: "yes!成功！", content: "他自己，自从到城里来，又长高了一寸多。他自己觉出来，仿佛还得往高里长呢。不错，他的皮肤与模样都更硬棒与固定了一些，而且上唇上已有了小小的胡子；可是他以为还应当再长高一些。当他走到个小屋门或街门而必须大低头才能进去的时候，他虽不说什么，可是心中暗自喜欢，因为他已经是这么高大，而觉得还正在发长，他似乎既是个成人，又是个孩子，非常有趣。这么大的人，拉上那么美的车，他自己的车，弓子软得颤悠颤悠的，连车把都微微的动弹；车箱是那么亮，垫子是那么白，喇叭是那么响；跑得不快怎能对得起自己呢，怎能对得起那辆车呢？这一点不是虚荣心，而似乎是一种责任，非快跑，飞跑，不足以充分发挥自己的力量与车的优美。那辆车也真是可爱，拉过了半年来的，仿佛处处都有了知觉与感情，祥子的一扭腰，一蹲腿，或一直脊背，它都就马上应合着，给祥子以最顺心的帮助，他与它之间没有一点隔膜别扭的地方。赶到遇上地平人少的地方，祥子可以用一只手拢着把，微微轻响的皮轮象阵利飕的小风似的催着他跑，飞快而平稳。拉到了地点，祥子的衣裤都拧得出汗来，哗哗的，象刚从水盆里捞出来的。他感到疲乏，可是很痛快的，值得骄傲的，一种疲乏，如同骑着名马跑了几十里那样。假若胆壮不就是大意，祥子在放胆跑的时候可并不大意。不快跑若是对不起人，快跑而碰伤了车便对不起自己。车是他的命，他知道怎样的小心。小心与大胆放在一处，他便越来越能自信，他深信自己与车都是铁作的。" });
+            });
+            $("#btn_question").click(function () {
+                $.NZ_MsgBox.confirm({
+                    title: "确认成功？", content: "耶耶耶！成功！well done!", callback: function (resu) {
+                        console.log(resu);
+                    }
+                });
+            });
+            $("#btn_questionwarning").click(function () {
+                $.NZ_MsgBox.confirm({
+                    title: "确认成功？", content: "耶耶耶！成功！well done!", type: "warning", callback: function (resu) {
+                        console.log(resu);
+                    }
+                });
+            });
+            $("#btn_prompt").click(function () {
+                $.NZ_MsgBox.prompt({
+                    title: "输入一下下？", type: "warning", callback: function (resu) {
+                        if (resu === null) {
+                            $.NZ_MsgBox.tipsbar({ title: "提示", content: "没有输入什么......", showtime: 3000 });
+                        } else {
+                            $.NZ_MsgBox.tipsbar({
+                                title: "提示", content: "您输入了：<div style=\"color:#0000ff\">" + resu + "</div>", type: "info", showtime: 3000
+                            });
+                        }
+                    }
+                });
+            });
+            $("#btn_promptdefval").click(function () {
+                $.NZ_MsgBox.prompt({
+                    title: "输入一下下？", content: "耶耶耶！成功！well done!", type: "warning", callback: function (resu) {
+                        if (resu === null) {
+                            $.NZ_MsgBox.tipsbar({ title: "提示", content: "没有输入什么......", showtime: 3000 });
+                        } else {
+                            $.NZ_MsgBox.tipsbar({
+                                title: "提示", content: "您输入了：<div style=\"color:#0000ff\">" + resu + "</div>", type: "info", showtime: 3000
+                            });
+                        }
+                    }
+                });
+            });
+            $("#tipsbar_0").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "明天下午开会！" });
+            });
+            $("#tipsbar_1").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "操作成功！<span style=\"color:#ff0000;\">Success!</span>", type: "success", showtime: 3000, processbar: false });
+            });
+            $("#tipsbar_2").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！<span style=\"color:#0000ff\">Warning!警告！</span>Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!", type: "warning" });
+            });
+            $("#tipsbar_3").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "错误！Error!", type: "error", showtime: 5000 });
+            });
+            $("#tipsbar_4").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "消息！Information!", type: "info" });
+            });
+            $("#tipsbar_5").click(function () {
+                $.NZ_MsgBox.tipsbar({
+                    content: "3秒后有个惊喜！", type: "info", callback: function () {
+                        $.NZ_MsgBox.alert({ content: "Surprise!沙普赖斯！", buttons: { confirm: { text: "收到！" } } });
+                    }, showtime: 3000
+                });
+            });
+            $("#tipsbar_6").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "您有新消息！Information!4.5s后消失", type: "info", location: "top", showtime: 4500 });
+            });
+            $("#tipsbar_7").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "您有新消息！Information!4.5s后消失", type: "info", tipsort: "bottom", location: "top", showtime: 4500 });
+            });
+            $("#tipsbar_8").click(function () {
+                $.NZ_MsgBox.tipsbar({ title: "通知", content: "这是一个底部通知！", type: "info", tipsort: "bottom", showtime: 4500 });
+            });
+
+
+
+            $("#toast_0").click(function () {
+                var toast = $.NZ_MsgBox.toast({ content: "我是测试的消息", showtime: 3000 });
+            });
+            $("#toast_1").click(function () {
+                var toast = $.NZ_MsgBox.toast({ content: "我从上面跑下来的，你康康帅不帅", location: "top", showtime: 3000 });
+            });
+            $("#toast_2").click(function () {
+                var opts = {
+                    lines: 16, // The number of lines to draw
+                    length: 6, // The length of each line
+                    width: 19, // The line thickness
+                    radius: 7, // The radius of the inner circle
+                    scale: 1.35, // Scales overall size of the spinner
+                    corners: 1, // Corner roundness (0..1)
+                    color: '#ffffff', // CSS color or array of colors
+                    fadeColor: 'transparent', // CSS color or array of colors
+                    speed: 1.3, // Rounds per second
+                    rotate: 0, // The rotation offset
+                    animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+                    direction: 1, // 1: clockwise, -1: counterclockwise
+                    zIndex: 2e9, // The z-index (defaults to 2000000000)
+                    className: 'spinner', // The CSS class to assign to the spinner
+                    top: '50%', // Top position relative to parent
+                    left: '50%', // Left position relative to parent
+                    shadow: '0 0 1px transparent', // Box-shadow for the lines
+                    position: 'absolute' // Element positioning
+                };
+                var toastcon = $("<div><div style=\"position:relative;width:80px;height:80px;\"></div><h3 style=\"margin-bottom:0;\">正在加载</h3></div>");
+                var spinner = new Spinner(opts).spin(toastcon.children("div").get(0));
+                var toast = $.NZ_MsgBox.toast({
+                    content: toastcon.prop("outerHTML"), masklayer: true, showtime: 5000, onhide: function () {
+                        $.NZ_MsgBox.toast({ content: "加载完毕", location: "top", showtime: 3000 });
+                    }
+                });
+
+            });
+            $("#toast_3").click(function () {
+                var toast = $.NZ_MsgBox.toast({
+                    content: "<div><img src=\"images/Spin-1s-64px.gif\" /></div><h3 style=\"margin-bottom:0;\">正在加载</h3>", masklayer: true
+                });
+                setTimeout(function () {
+                    toast.update({ content: "<div style=\"font-size:64px;\"><i class=\"fas fa-check\"></i></div><h3 style=\"margin-bottom:0;\">加载完毕</h3>" });
+                }, 3000);
+                setTimeout(function () {
+                    toast.hide();
+                }, 5000);
+            });
+
+            run_Tooltips();
+        });
+
+        function run_Tooltips() {
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_0"),
+                content: "我是一个萌萌哒提示！"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_1"),
+                content: "上面提示！",
+                location: "top"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_2"),
+                content: "右侧提示！",
+                location: "right"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_3"),
+                content: "左侧提示！",
+                location: "left"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_4"),
+                content: "底部提示！",
+                location: "bottom"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_5"),
+                content: "我来也！",
+                show: "mousedown"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_6"),
+                content: "我又来也！",
+                show: "dblclick", hide: "click"
+            });
+
+            $("#tooltips_themelist").append("<div class=\"yellow\">LightYellow</div><div class=\"red\">Red</div><div class=\"green\">Green</div><div class=\"blue\">Blue</div><div class=\"dark\">Dark</div>");
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_themelist").find(".yellow"),
+                content: "LightYellow！",
+                theme: "lightyellow"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_themelist").find(".red"),
+                content: "Red！",
+                theme: "red"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_themelist").find(".green"),
+                content: "Green！",
+                theme: "green"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_themelist").find(".blue"),
+                content: "Blue！",
+                theme: "blue"
+            });
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $("#tooltips_themelist").find(".dark"),
+                content: "Dark！",
+                theme: "dark"
+            });
+
+            for (var i = 0; i < 8; i++) {
+                if (i === 6) {
+                    $("#tooltips_attrdemo.panel-block").append("<div class=\"block\" hha=\"我是序号7，我来提示你的早餐还没吃。<div style='color:#0000ff;'>I'm No.7,you haven't had breakfast yet.</span>\">" + (i + 1) + "</div>");
+                } else {
+                    $("#tooltips_attrdemo.panel-block").append("<div class=\"block\" hha=\"我的序号：" + (i + 1) + "\">" + (i + 1) + "</div>");
+                }
+
+                var colorAngle = Math.floor(Math.random() * 360);
+                var color = 'hsla(' + colorAngle + ',80%,50%,.2)';
+                $("#tooltips_attrdemo.panel-block .block:last").css({ "background-color": color });
+            }
+            $.NZ_MsgBox.tooltip({
+                tiptarget: $(".block"),
+                contentAttr: "hha",
+                location: ""
+                //theme: "lightyellow"
+            });
+        }
+
+    </script>
+    <style>
+        .codelist {
+            display: none;
+        }
+
+        .panel-code-bg {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(245,245,245,.6);
+            backdrop-filter: saturate(.5) blur(3px);
+            z-index: 998;
+        }
+
+        .panel-code {
+            position: fixed;
+            left: 10%;
+            right: 10%;
+            top: 10%;
+            bottom: 10%;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 5px 17px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px -1px #787878;
+            background-color: rgba(46,46,46, 0.9);
+        }
+
+        .panel-block {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+            .panel-block > div {
+                padding: 20px 40px;
+                margin: 20px 20px 0 0;
+                font-size: 2.5em;
+                font-weight: 600;
+                text-align: center;
+                color: #fff;
+                user-select: none;
+                cursor: default;
+            }
+
+                .panel-block > div.yellow {
+                    border: 2px solid rgb(241, 208, 49);
+                    background: rgb(255, 255, 163);
+                    color: #928484;
+                }
+
+                .panel-block > div.green {
+                    border: 2px solid rgb(144, 217, 63);
+                    background: rgb(202, 237, 158);
+                }
+
+                .panel-block > div.blue {
+                    border: 2px solid rgb(173, 217, 237);
+                    color: #4e4e4e;
+                    background: rgb(229, 246, 254);
+                }
+
+                .panel-block > div.red {
+                    border: 2px solid rgb(217, 82, 82);
+                    background: rgb(247, 139, 131);
+                }
+
+                .panel-block > div.dark {
+                    border: 2px solid rgb(48, 48, 48);
+                    background: rgb(80, 80, 80);
+                }
+    </style>
+</head>
+<body>
+    <h2 class="pagetitle">NZ-MsgBox</h2>
+    <ul class="conlist">
+        <li>
+            <div class="contitle">Alert</div>
+            <ul>
+                <li>
+                    <h3>使用方法 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="btn_msgbox_noicon">不带图标</button>
+                    <button class="button" type="button" id="btn_msgbox_notitle">不带标题</button>
+                    <button class="button" type="button" id="btn_msgbox_success">成功</button>
+                    <button class="button" type="button" id="btn_warning">警告</button>
+                    <button class="button" type="button" id="btn_msgbox_error">错误</button>
+                    <button class="button" type="button" id="btn_supercon">超长内容</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                    //不带图标
+                    $.NZ_MsgBox.alert({ 
+                        title: "yes!成功！"
+                        , content: "耶耶耶！成功！well done!"
+                        , type: ""
+                        , buttons: { 
+                            confirm: { text: "好的" } 
+                        } 
+                    });
+                    //不带图标
+                    $.NZ_MsgBox.alert({ 
+                        title: ""
+                        , content: "耶耶耶！成功！well done!"
+                        , type: ""
+                        , buttons: { 
+                            confirm: {text: "好的"} 
+                        } 
+                    });
+                    //成功
+                    $.NZ_MsgBox.alert({ 
+                        title: "yes!成功！"
+                        , content: "耶耶耶！成功！well done!"
+                        , type: "success" 
+                    });
+                    //警告
+                    $.NZ_MsgBox.alert({
+                        title: "Warning!警告！"
+                        , content: "Warning！警告！well done!"
+                        , type: "warning" 
+                    });
+                    //错误
+                    $.NZ_MsgBox.alert({ 
+                        title: "Error!错误！"
+                        , content: "Error！错误！"
+                        , type: "error" 
+                    });
+                    //超长内容
+                    $.NZ_MsgBox.alert({
+                        title: "yes!成功！"
+                        , content: "他自己，自从到城里来，......" 
+                    });
+                </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="contitle">Confirm</div>
+            <ul>
+                <li>
+                    <h3>使用方法 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="btn_question">疑问</button>
+                    <button class="button" type="button" id="btn_questionwarning">警告疑问</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                    //询问
+                    $.NZ_MsgBox.confirm({
+                        title: "确认成功？"
+                        , content: "耶耶耶！成功！well done!"
+                        , callback: function (resu) {
+                            
+                        }
+                    });
+                    //警告询问
+                    $.NZ_MsgBox.confirm({
+                        title: "确认成功？"
+                        , content: "耶耶耶！成功！well done!"
+                        , type: "warning"
+                        , callback: function (resu) {
+                            console.log(resu);
+                        }
+                    });
+                </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="contitle">Prompt</div>
+            <ul>
+                <li>
+                    <h3>使用方法 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="btn_prompt">输入</button>
+                    <button class="button" type="button" id="btn_promptdefval">输入(默认值)</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                 //输入
+                 $.NZ_MsgBox.prompt({
+                 title: "输入一下下？", type: "warning", callback: function (resu) {
+                 if (resu === null) {
+                             $.NZ_MsgBox.tipsbar({ title: "提示", content: "没有输入什么......",showtime:3000 });
+                         } else {
+                             $.NZ_MsgBox.tipsbar({
+                                title: "提示", content: '您输入了：<div style="color:#0000ff">' + resu + '</div>', type: "info", showtime: 3000
+                            });
+                         }
+                     }
+                 });
+                //输入(默认值)
+                $.NZ_MsgBox.prompt({
+                    title: "输入一下下？", content: "耶耶耶！成功！well done!",type:"warning",callback:funct (resu    {
+                        if (resu === null) {
+                            $.NZ_MsgBox.tipsbar({ title: "提示", content: "没有输入什么......", showtime:3000 });
+                        } else {
+                            $.NZ_MsgBox.tipsbar({
+                                title: "提示", content: '您输入了：<div style="color:#0000ff">' + resu + '</div>', type: "info", showtime: 3000
+                            });
+                        }
+                    }
+                });
+                </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="contitle">TipsBar</div>
+            <ul>
+                <li>
+                    <h3>使用方法 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="tipsbar_0">普通无状态通知</button>
+                    <button class="button" type="button" id="tipsbar_1">成功(3s消失)</button>
+                    <button class="button" type="button" id="tipsbar_2">警告</button>
+                    <button class="button" type="button" id="tipsbar_3">错误(5s消失)</button>
+                    <button class="button" type="button" id="tipsbar_4">消息</button>
+                    <button class="button" type="button" id="tipsbar_5">回调</button>
+                    <button class="button" type="button" id="tipsbar_6">居中顶部消息</button>
+                    <button class="button" type="button" id="tipsbar_7">居中底部消息</button>
+                    <button class="button" type="button" id="tipsbar_8">消息方向（自下而上）</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                    //普通无状态通知
+                    $.NZ_MsgBox.tipsbar({ title: "通知", content: "明天下午开会！" });
+                    //成功(3s消失，且不显示倒计时进度)
+                    $.NZ_MsgBox.tipsbar({ 
+                        title: "通知"
+                        , content: '操作成功！<span style="color:#ff0000;">Success!</span>'
+                        , type: "success"
+                        , showtime: 3000
+                        , processbar: false 
+                    });
+                    //警告(长内容)
+                    $.NZ_MsgBox.tipsbar({ 
+                        title: "通知"
+                        , content: '警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！<span style="color:#0000ff">Warning!警告！</span>Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!警告！Warning!'
+                        ,type: "warning" 
+                     });
+                    //错误(5s消失)
+                    $.NZ_MsgBox.tipsbar({ 
+                        title: "通知"
+                        , content: "错误！Error!"
+                        , type: "error"
+                        , showtime: 5000 
+                    });
+                    //消息
+                    $.NZ_MsgBox.tipsbar({ title: "通知", content: "消息！Information!", type: "info" });
+                    //回调
+                    $.NZ_MsgBox.tipsbar({
+                        content: "3秒后有个惊喜！", type: "info", callback: function () {
+                            $.NZ_MsgBox.alert({ content: "Surprise!沙普赖斯！", buttons: { confirm: { text: "收   到！" } } });
+                        }, showtime: 3000
+                    });
+                    //居中顶部消息
+                    $.NZ_MsgBox.tipsbar({ 
+                        title: "通知"
+                        , content: "您有新消息！Information!4.5s后消失"
+                        , type: "info"
+                        , location: "top"
+                        , showtime: 4500
+                     });
+                     //居中底部消息
+                     $("#tipsbar_7").click(function () {
+                        $.NZ_MsgBox.tipsbar({ title: "通知", content: "您有新消息！     Information!4.5s后消失", type: "info", tipsort: "bottom",       location: "top", showtime: 4500 });
+                     });
+                    //消息方向(自下而上)
+                    $.NZ_MsgBox.tipsbar({
+                        title: "通知"
+                        , content: "这是一个底部通知！"
+                        , type: "info"
+                        , tipsort: "bottom"
+                        , showtime: 4500 
+                    });
+                </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="contitle">Toast</div>
+            <ul>
+                <li>
+                    <h3>使用方法 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="toast_0">即时提示</button>
+                    <button class="button" type="button" id="toast_1">顶部提示</button>
+                    <button class="button" type="button" id="toast_2">Loading 1</button>
+                    <button class="button" type="button" id="toast_3">Loading 2</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                    //一般应用
+                    var toast = $.NZ_MsgBox.toast({ content: "我是测试的消息", showtime: 3000 });
+                    //位置设置
+                    var toast = $.NZ_MsgBox.toast({ content: "我从上面跑下来的，你康康帅不帅", location: "top", showtime: 3000 });
+                    //实现loading效果(融合loadingspinner，效果更好)，使用关闭回调函数，并设置遮罩
+                    var opts = {
+                        lines: 16, // The number of lines to draw
+                        length: 6, // The length of each line
+                        width: 19, // The line thickness
+                        radius: 7, // The radius of the inner circle
+                        scale: 1.35, // Scales overall size of the spinner
+                        corners: 1, // Corner roundness (0..1)
+                        color: '#ffffff', // CSS color or array of colors
+                        fadeColor: 'transparent', // CSS color or array of colors
+                        speed: 1.3, // Rounds per second
+                        rotate: 0, // The rotation offset
+                        animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+                        direction: 1, // 1: clockwise, -1: counterclockwise
+                        zIndex: 2e9, // The z-index (defaults to 2000000000)
+                        className: 'spinner', // The CSS class to assign to the spinner
+                        top: '50%', // Top position relative to parent
+                        left: '50%', // Left position relative to parent
+                        shadow: '0 0 1px transparent', // Box-shadow for the lines
+                        position: 'absolute' // Element positioning
+                    };
+                    var toastcon = $('<div><div style="position:relative;width:80px;height:80px;"></div><h3 style="margin-bottom:0;">正在加载</h3></div>');
+                    var spinner = new Spinner(opts).spin(toastcon.children("div").get(0));
+                    var toast = $.NZ_MsgBox.toast({
+                    content: toastcon.prop("outerHTML"), masklayer: true,showtime:5000, onhide: function () {
+                        $.NZ_MsgBox.toast({ content: "加载完毕", location: "top", showtime: 3000 });
+                        }
+                    });
+                    //实现loading效果(使用图片)，并使用update函数更新内容方式
+                    var toast = $.NZ_MsgBox.toast({
+                        content: '<div><img src="../../images/Spin-1s-64px.gif" /></div><h3 style="margin-bottom:0;">正在加载</h3>', masklayer: true
+                    });
+                    setTimeout(function () {
+                        toast.update({ content: '<div style="font-size:64px;"><i class="fas fa-check"></i></div><h3 style="margin-bottom:0;">加载完毕</h3>' });
+                    }, 3000);
+                    setTimeout(function () {
+                            toast.hide();
+                        }, 5000);
+                    });
+                    //所有参数
+                    {
+                        onshowbefore: function () { },//显示前事件
+                        onshow: function () { },//显示后事件
+                        onhidebefore: function () { },//关闭前事件
+                        onhide: function () { },//关闭后事件
+                        content: null,//内容
+                        location: "center",//定位(默认中间)：top、center
+                        masklayer: false,//遮罩
+                        showtime: null//显示时间
+                    };
+                </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="contitle">Tooltips</div>
+            <ul>
+                <li>
+                    <h3>一般应用 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="tooltips_0">悬浮显示</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_0"),
+                                content: "我是一个萌萌哒提示！"
+                            });
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    <h3>方位 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="tooltips_1">默认自动方位</button>
+                    <button class="button" type="button" id="tooltips_2">右侧提示</button>
+                    <button class="button" type="button" id="tooltips_3">左侧提示</button>
+                    <button class="button" type="button" id="tooltips_4">底部提示</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_1"),
+                                content: "上面提示！",
+                                location: "top"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_2"),
+                                content: "右侧提示！",
+                                location: "right"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_3"),
+                                content: "左侧提示！",
+                                location: "left"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_4"),
+                                content: "底部提示！",
+                                location: "bottom"
+                            });
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    <h3>自定义触发 <i class="fas fa-file-code"></i></h3>
+                    <button class="button" type="button" id="tooltips_5">点击显示</button>
+                    <button class="button" type="button" id="tooltips_6">双击显示,单击隐藏</button>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_5"),
+                                content: "我来也！",
+                                show: "mousedown", hide: "mousedown"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_6"),
+                                content: "我又来也！",
+                                show: "dblclick",hide:"click"
+                            });
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    <h3>主题 <i class="fas fa-file-code"></i></h3>
+                    <div class="panel-block" id="tooltips_themelist"></div>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_themelist").find(".yellow"),
+                                content: "LightYellow！",
+                                theme: "lightyellow"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_themelist").find(".red"),
+                                content: "Red！",
+                                theme: "red"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_themelist").find(".green"),
+                                content: "Green！",
+                                theme: "green"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_themelist").find(".blue"),
+                                content: "Blue！",
+                                theme: "blue"
+                            });
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $("#tooltips_themelist").find(".dark"),
+                                content: "Dark！",
+                                theme: "dark"
+                            });
+                        </pre>
+                    </div>
+                </li>
+                <li>
+                    <h3>显示指定属性内容 <i class="fas fa-file-code"></i></h3>
+                    <div class="panel-block" id="tooltips_attrdemo"></div>
+                    <div class="codelist">
+                        <pre class="brush:js">
+                            $.NZ_MsgBox.tooltip({
+                                tiptarget: $(".block"),
+                                contentAttr: "hha"
+                            });
+                        </pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

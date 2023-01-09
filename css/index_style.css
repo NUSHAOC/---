@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: contents;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ccc;
+    /* background: url(../images/login_images/picturefour.jpg) no-repeat; */
+    /* background-size: cover; */
+}
+
+h1 {
+    font-family: '包图小白体';
+    position: absolute;
+    font-size: 75px;
+    left: 50%;
+    color: rgb(76, 173, 238);
+    transform: translate(-50%, 0);
+    top: 100px;
+    user-select: none;
+}
+
+.login_module {
+    position: absolute;
+    /* font-family: ''; */
+    font-size: 22px;
+    line-height: 65px;
+    width: 210px;
+    height: 65px;
+    text-align: center;
+    background-color: #DB2122;
+    border-radius: 22px;
+    top: 500px;
+}
+
+.login_module:hover {
+    cursor: pointer;
+}
+
+.login_module:nth-of-type(1) {
+    transform: translate(-50%, 0);
+    left: 30%;
+}
+
+.login_module:nth-of-type(2) {
+    transform: translate(-50%, 0);
+    left: 50%;
+    background-color: #2A8CE1;
+}
+
+.login_module:nth-of-type(3) {
+    transform: translate(-50%, 0);
+    left: 70%;
+    background-color: #5EDD34;
+}
+
+a {
+    position: absolute;
+    display: block;
+    left: 25%;
+    transform: translate(-10px, 0);
+}
+
+a:nth-of-type(1) {
+    top: 655PX;
+}
+
+a:nth-of-type(2) {
+    top: 730px;
+}
